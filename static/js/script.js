@@ -9,13 +9,18 @@ function generateRandomNumber() {
 
 // Add event listener to the form
 // document
-//   .getElementById("usernameForm")
+//   .getElementById("formRegister")
 //   .addEventListener("submit", function (event) {
 //     event.preventDefault(); // Prevent the form from submitting normally
 
 //     // Get the username value from the form
+//     var emailAddress = document.getElementById("emailAddress").value;
+//     var fullName = document.getElementById("fullName").value;
+//     var programStudi = document.getElementById("programStudi").value;
 //     var username = document.getElementById("nim").value;
+//     var angkatan = document.getElementById("angkatan").value;
 
+//     async
 //     // Simulate form submission with AJAX
 //     fetch("/tes", {
 //       method: "POST",

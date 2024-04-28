@@ -20,16 +20,26 @@ def register():
 
 @app.route("/registerwajah", methods=["POST"])
 def registerwajah():
-    email = request.form['email']
-    nama = request.form['nama']
-    nim = request.form['nim']
-    prodi = request.form['prodi']
-    angkatan = request.form['angkatan']
-    cur = mysql.connection.cursor()
-    cur.execute("INSERT INTO mahasiswaterdaftar(email,nama,nim,prodi,angkatan) VALUES(%s,%s,%s,%s,%s)", (email,nama,nim,prodi,angkatan))
-    mysql.connection.commit()
-    cur.close()
-    return render_template('register.html',menu='register')
+    email = request.form.get('emailAddress')
+    nama = request.form.get('fullName')
+    nim = request.form.get('nim')
+    prodi = request.form.get('programStudi')
+    angkatan = request.form.get('angkatan')
+
+    if email and nama and nim and prodi and angkatan:  # Memastikan semua data diterima
+        try:
+            cur = mysql.connection.cursor()
+            cur.execute("INSERT INTO mahasiswaterdaftar(email,nama,nim,prodi,angkatan) VALUES(%s,%s,%s,%s,%s)", (email,nama,nim,prodi,angkatan))
+            mysql.connection.commit()
+            cur.close()
+            response = {'success': True, 'nim': nim}
+            return jsonify(response)
+        except Exception as e:
+            response = {'success': False, 'error_message': str(e)}
+            return jsonify(response), 500  # Mengembalikan kode status 500 (Internal Server Error) jika terjadi kesalahan
+    else:
+        response = {'success': False, 'error_message': 'Missing required data'}
+        return jsonify(response), 400  # Mengembalikan kode status 400 (Bad Request) jika data yang diperlukan tidak ditemukan
 
 @app.route("/login")
 def login():

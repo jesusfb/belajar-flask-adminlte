@@ -22,7 +22,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" action="/registerwajah" method="POST">
+                <form role="form" id="formRegister" action="/registerwajah" method="POST">
                     <div class="card-body">
                         <div class="form-group">
                             <label for="emailAddress">Alamat Email</label>
@@ -67,5 +67,7 @@
     </section>
     <!-- /.content -->
 </div>
+
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
 
 {% include 'footer.html' %}
