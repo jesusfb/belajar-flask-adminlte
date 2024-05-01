@@ -4,3 +4,4 @@ omegaconf
 soundfile
 flask
 gunicorn
+flask_mysqldb
