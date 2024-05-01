@@ -1,7 +1,2 @@
-torch
-torchaudio
-omegaconf
-soundfile
 flask
-gunicorn
 flask_mysqldb
